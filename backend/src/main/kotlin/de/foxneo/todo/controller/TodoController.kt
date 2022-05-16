@@ -3,7 +3,14 @@ package de.foxneo.todo.controller
 import de.foxneo.todo.entities.Todo
 import de.foxneo.todo.entities.TodoRepository
 import org.springframework.data.repository.findByIdOrNull
-import org.springframework.web.bind.annotation.*
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.DeleteMapping
+import org.springframework.web.bind.annotation.PutMapping
+import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.RestController
 import java.util.Optional
 import javax.servlet.Filter
 import javax.servlet.FilterChain
@@ -18,7 +25,7 @@ import javax.servlet.http.HttpServletResponse
 class TodoController (val todoRepository: TodoRepository) : Filter  {
 
     @GetMapping
-    fun getTodos() = todoRepository.findAll();
+    fun getTodos() = todoRepository.findAll()
 
     @GetMapping("/{todoId}")
     fun getTodo(@PathVariable("todoId") todoId: Long): Optional<Todo> {
